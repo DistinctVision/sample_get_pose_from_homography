@@ -1,1 +1,1 @@
-# sample_get_pose_from_homography
+A sample of getting a position from homography
