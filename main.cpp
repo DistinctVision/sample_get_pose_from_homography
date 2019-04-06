@@ -191,6 +191,7 @@ int main()
         cv::Scalar(255, 0, 155)
     };
 
+    size_t colorOffset = 0;
     while (capture.isOpened())
     {
         if (!capture.read(cvFrameImage))
@@ -206,10 +207,12 @@ int main()
         {
             Pose pose = getMarkerPose(K, markerCorners[i], markerPoints);
             drawCube(cvFrameImage, K, pose,
-                     colors[static_cast<size_t>(markerIDs[i]) % colors.size()]);
+                     colors[(static_cast<size_t>(markerIDs[i]) + colorOffset) % colors.size()]);
         }
 
         cv::imshow("frame", cvFrameImage);
+
+        colorOffset = (colorOffset + 1) % colors.size();
 
         int key = cv::waitKey(33);
         if (key == 27)
