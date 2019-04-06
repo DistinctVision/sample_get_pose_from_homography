@@ -145,7 +145,7 @@ int main()
 
     cv::VideoCapture capture;
 
-    if (!capture.open(1))
+    if (!capture.open(0))
     {
         cerr << "camera not found" << endl;
         return -1;
